@@ -3,7 +3,7 @@ name: Compile LaTeX document
 on:
   push:
     branches:
-      - main  # O el nombre de la rama que estás usando
+      - master  # O el nombre de la rama que estás usando
 
 jobs:
   build:
