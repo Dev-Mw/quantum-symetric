@@ -3,7 +3,7 @@ name: Compile LaTeX document
 on:
   push:
     branches:
-      - master  # O el nombre de la rama que estás usando
+      - master  # O el nombre de la rama que estés usando
 
 jobs:
   build:
@@ -11,17 +11,17 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Actualización a la versión más reciente
 
     - name: Install TeX Live
       run: sudo apt-get install -y texlive-full
 
     - name: Compile LaTeX document
       run: |
-        pdflatex test.tex
-        
+        pdflatex nombre_del_documento.tex
+
     - name: Upload compiled PDF
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Actualización a la versión más reciente
       with:
         name: compiled-pdf
         path: nombre_del_documento.pdf
