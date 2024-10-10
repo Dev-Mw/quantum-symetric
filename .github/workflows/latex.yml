@@ -3,7 +3,7 @@ name: Compile LaTeX document
 on:
   push:
     branches:
-      - master  # O el nombre de la rama que estés usando
+      - master
 
 jobs:
   build:
@@ -11,17 +11,26 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3  # Actualización a la versión más reciente
+      uses: actions/checkout@v3
 
-    - name: Install TeX Live
+    - name: Cache TeX Live
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/texlive
+        key: ${{ runner.os }}-texlive-${{ hashFiles('**/*.tex') }}
+        restore-keys: |
+          ${{ runner.os }}-texlive-
+
+    - name: Install TeX Live if not cached
       run: sudo apt-get install -y texlive-full
+      if: steps.cache.outputs.cache-hit != 'true'  # Solo instalar si no se encuentra en caché
 
     - name: Compile LaTeX document
       run: |
-        pdflatex nombre_del_documento.tex
+        pdflatex document.tex
 
     - name: Upload compiled PDF
-      uses: actions/upload-artifact@v3  # Actualización a la versión más reciente
+      uses: actions/upload-artifact@v3
       with:
         name: compiled-pdf
-        path: nombre_del_documento.pdf
+        path: document.pdf
