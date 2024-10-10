@@ -1,0 +1,27 @@
+name: Compile LaTeX document
+
+on:
+  push:
+    branches:
+      - main  # O el nombre de la rama que estás usando
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install TeX Live
+      run: sudo apt-get install -y texlive-full
+
+    - name: Compile LaTeX document
+      run: |
+        pdflatex test.tex
+        
+    - name: Upload compiled PDF
+      uses: actions/upload-artifact@v2
+      with:
+        name: compiled-pdf
+        path: nombre_del_documento.pdf
