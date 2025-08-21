@@ -25,7 +25,7 @@ In the context of quantum computing:
 
 ### 1.1. Symmetric Quantum Gates
 
-Some gates act symmetrically on basis states. For instance, the **Hadamard gate** $\( H \)$$ creates a balanced superposition:
+Some gates act symmetrically on basis states. For instance, the **Hadamard gate** $\( H \)$ creates a balanced superposition:
 
 $$
 \[
