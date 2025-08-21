@@ -64,10 +64,12 @@ Such symmetries can reduce the Hilbert space needed in quantum simulation.
 
 Topological codes, like the **surface code**, rely on lattice symmetry to define stabilizers:
 
+$$
 \[
 S_i = \prod_{j \in \text{plaquette}_i} \sigma^z_j, \quad
 S_i = \prod_{j \in \text{star}_i} \sigma^x_j
 \]
+$$
 
 These symmetric stabilizers enable detection and correction of local errors.
 
